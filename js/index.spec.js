@@ -1,17 +1,15 @@
 const getCategoryPath = require("./index");
 const categories = require("./constants/categories.const");
 
-const falsyValues = [
+const invalidValues = [
   { value: null, expectedPath: null },
   { value: undefined, expectedPath: null },
   { value: false, expectedPath: null },
   { value: "", expectedPath: null },
   { value: NaN, expectedPath: null },
+  { value: [], expectedPath: null },
   { value: 0n, expectedPath: null },
   { value: -0, expectedPath: null },
-];
-
-const truthyValues = [
   { value: true, expectedPath: null },
   { value: {}, expectedPath: null },
   { value: 1, expectedPath: null },
@@ -33,8 +31,7 @@ describe("Given getCategoryPath method", () => {
       { value: "category5", expectedPath: "/category5" },
       { value: "category9", expectedPath: null },
       { value: "random-word", expectedPath: null },
-      ...falsyValues,
-      ...truthyValues,
+      ...invalidValues,
     ];
 
     describe.each(categoryNameCases)(
@@ -48,24 +45,12 @@ describe("Given getCategoryPath method", () => {
     );
   });
 
-  describe("When the categories param is an empty array", () => {
-    it("Then it should return null", () => {
-      const returnedPath = getCategoryPath([], "category1");
-      expect(returnedPath).toBe(null);
+  describe("When categoryName is 'category1'", () => {
+    describe.each(invalidValues)("And categories is '$value'", ({ value }) => {
+      it(`Then it should return null`, () => {
+        const returnedPath = getCategoryPath(value, "category1");
+        expect(returnedPath).toBe(null);
+      });
     });
-  });
-
-  describe("When the categories param is not an array", () => {
-    const categoriesCases = [...falsyValues, ...truthyValues];
-
-    describe.each(categoriesCases)(
-      "And categories is '$value'",
-      ({ value }) => {
-        it(`Then it should return null`, () => {
-          const returnedPath = getCategoryPath(value, "category1");
-          expect(returnedPath).toBe(null);
-        });
-      }
-    );
   });
 });
