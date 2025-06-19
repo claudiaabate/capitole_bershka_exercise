@@ -1,0 +1,28 @@
+{
+  "name": "capitole_bershka_exercise",
+  "version": "1.0.0",
+  "description": "Technical exercise for Capitole Consulting and Bershka",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start:ts": "ts-node ts/index.ts",
+    "start:js": "node js/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudiaabate/capitole_bershka_exercise.git"
+  },
+  "author": "Claudia Abate Ortiz",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/claudiaabate/capitole_bershka_exercise/issues"
+  },
+  "homepage": "https://github.com/claudiaabate/capitole_bershka_exercise#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.2",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

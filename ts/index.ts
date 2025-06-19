@@ -1,32 +1,5 @@
-interface Category {
-  name: string;
-  subcategories: Category[];
-}
-
-const categories: Category[] = [
-  {
-    name: "category1",
-    subcategories: [
-      {
-        name: "category2",
-        subcategories: [],
-      },
-      {
-        name: "category3",
-        subcategories: [
-          {
-            name: "category4",
-            subcategories: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "category5",
-    subcategories: [],
-  },
-];
+import { Category } from "./interfaces/categories.interfaces";
+import { categories } from "./constants/categories.const";
 
 /**
  * Returns a path based on the category name and the structure of the categories array
@@ -34,7 +7,7 @@ const categories: Category[] = [
  * @param {string} categoryName
  * @returns {(string|null)} String if the path is found, null if not found
  */
-const getCategoryPath = (
+export const getCategoryPath = (
   categories: Category[],
   categoryName: string
 ): string | null => {
